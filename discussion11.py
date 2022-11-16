@@ -76,10 +76,8 @@ def add_pets_from_json(filename, cur, conn):
 def non_aggressive_pets(aggressiveness, cur, conn):
     cur.execute("SELECT name FROM Patients WHERE aggressiveness < ?", (aggressiveness,))
     non_aggressive_pets = cur.fetchall()
-    name_list = []
-    for pet in non_aggressive_pets:
-        name_list.append(pet[0])
-    return name_list
+    non_aggressive_pets = [item[0] for item in non_aggressive_pets]
+    return non_aggressive_pets
 
 
 
